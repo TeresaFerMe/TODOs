@@ -8,13 +8,13 @@ import com.teresaferme.todos.model.TODOModel
 class MainViewModel : BaseViewModel() {
     private var todoList = arrayListOf(
                 TODOModel(
-                    "name1", "name2", Color.Blue
+                    "name1", "name2", Color.Blue, false
                 ), TODOModel(
-                    "name1", "name2", Color.Red
+                    "name1", "name2", Color.Red, false
                 ), TODOModel(
-                    "name1", "name2", Color.Green
+                    "name1", "name2", Color.Green, false
                 ), TODOModel(
-                    "name1", "name2", Color.Blue
+                    "name1", "name2", Color.Blue, false
                 )
             )
 

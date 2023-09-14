@@ -32,15 +32,15 @@ import com.teresaferme.todos.ui.theme.todoCalendarCardHeight
 
 @Composable
 fun TODOListItem(
-    todoModel: TODOModel
+    todoModel: TODOModel, onCheckedChange: (Boolean) -> Unit
 ) {
     Card(modifier = Modifier.wrapContentHeight()) {
         Divider(
             modifier = Modifier.height(categoryLineSize), color = todoModel.categoryColor
         )
         Row(Modifier.padding(commonPadding)) {
-            Checkbox(checked = false, onCheckedChange = {
-
+            Checkbox(checked = todoModel.isCompleted, onCheckedChange = {
+                onCheckedChange.invoke(it)
             })
             Column(
                 modifier = Modifier
@@ -64,17 +64,18 @@ fun TODOListItem(
 
 @Composable
 fun TODOCalendarItem(
-    todoModel: TODOModel
+    todoModel: TODOModel, onCheckedChange: (Boolean) -> Unit
 ) {
     Card {
         Row(modifier = Modifier.heightIn(max = todoCalendarCardHeight)) {
             Spacer(
                 modifier = Modifier
                     .width(categoryLineSize)
-                    .background(todoModel.categoryColor).fillMaxHeight()
+                    .background(todoModel.categoryColor)
+                    .fillMaxHeight()
             )
-            Checkbox(checked = false, onCheckedChange = {
-
+            Checkbox(checked = todoModel.isCompleted, onCheckedChange = {
+                onCheckedChange.invoke(it)
             })
             Column(
                 modifier = Modifier.wrapContentSize()
@@ -96,8 +97,8 @@ fun TODOCalendarItem(
 fun TODOListPreview() {
     Surface(modifier = Modifier.wrapContentSize()) {
         TODOListItem(
-            TODOModel(name = "name", dueDate = "Due date", categoryColor = Color.Blue)
-        )
+            TODOModel(name = "name", dueDate = "Due date", categoryColor = Color.Blue, false)
+        ) {}
     }
 }
 
@@ -105,6 +106,6 @@ fun TODOListPreview() {
 @Composable
 fun TODOCalendarPreview() {
     TODOCalendarItem(
-        TODOModel(name = "name", dueDate = "Due date", categoryColor = Color.Blue)
-    )
+        TODOModel(name = "name", dueDate = "Due date", categoryColor = Color.Blue, false)
+    ) {}
 }

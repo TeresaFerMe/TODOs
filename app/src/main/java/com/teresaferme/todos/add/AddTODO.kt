@@ -2,8 +2,6 @@ package com.teresaferme.todos.add
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
@@ -27,7 +25,9 @@ fun AddTODO(
     onAddClicked: () -> Unit,
     onCloseClicked: () -> Unit
 ) {
-    Column(modifier = Modifier.padding(commonPadding).wrapContentHeight()) {
+    Column(modifier = Modifier
+        .padding(commonPadding)
+        .wrapContentHeight()) {
         Icon(
             painter = painterResource(id = R.drawable.ic_launcher_foreground),
             contentDescription = "Close modal",

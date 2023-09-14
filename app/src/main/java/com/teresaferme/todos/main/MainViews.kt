@@ -22,7 +22,7 @@ fun ListView(
     LazyColumn(content = {
         todoList.forEach {
             item {
-                TODOListItem(it)
+                TODOListItem(it) {}//TODO to be implemented
             }
         }
     }, verticalArrangement = Arrangement.spacedBy(todoCalendarCardSpacing))
@@ -42,7 +42,7 @@ fun CalendarView(
                 todoList.forEach { model ->
                     if (model.categoryColor == it) {
                         item {
-                            TODOCalendarItem(model)
+                            TODOCalendarItem(model) {}//TODO to be implemented
                         }
                     }
                 }
@@ -58,13 +58,13 @@ fun ListViewPreview() {
     ListView(
         listOf(
             TODOModel(
-                "name1", "name2", Color.Blue
+                "name1", "name2", Color.Blue, false
             ), TODOModel(
-                "name1", "name2", Color.Red
+                "name1", "name2", Color.Red, false
             ), TODOModel(
-                "name1", "name2", Color.Green
+                "name1", "name2", Color.Green, false
             ), TODOModel(
-                "name1", "name2", Color.Blue
+                "name1", "name2", Color.Blue, false
             )
         )
     )
@@ -75,13 +75,13 @@ fun ListViewPreview() {
 fun CalendarViewPreview() {
     CalendarView(todoList = listOf(
         TODOModel(
-            "name1", "name2", Color.Blue
+            "name1", "name2", Color.Blue, false
         ), TODOModel(
-            "name1", "name2", Color.Red
+            "name1", "name2", Color.Red, false
         ), TODOModel(
-            "name1", "name2", Color.Green
+            "name1", "name2", Color.Green, false
         ), TODOModel(
-            "name1", "name2", Color.Blue
+            "name1", "name2", Color.Blue, false
         )
     ))
 }

@@ -7,6 +7,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ModalDrawerSheet
 import androidx.compose.material3.Text
@@ -58,9 +60,9 @@ class MainActivity : BaseActivity() {
                 Text(text = "Change view", modifier = Modifier.clickable {
                         viewModel.updateSelectedView()
                     })
-                Text(text = "Add TODO", modifier = Modifier.clickable {
-                        viewModel.startAddTODOProcess()
-                    })
+                Button(onClick = { viewModel.startAddTODOProcess() }, shape = CircleShape) {
+                    Text(text = "+")
+                }
             }
             if (isAddModalShown.value) {
                 ModalDrawerSheet(
@@ -78,7 +80,8 @@ class MainActivity : BaseActivity() {
                                 TODOModel(
                                     name = "nuevo ${viewModel.getTODOsList().count()}",
                                     dueDate = "due",
-                                    categoryColor = Color.Cyan
+                                    categoryColor = Color.Cyan,
+                                    isCompleted = false
                                 )
                             )
                             viewModel.endAddTODOProcess()
