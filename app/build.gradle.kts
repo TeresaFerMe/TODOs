@@ -5,12 +5,14 @@ plugins {
 
 android {
     namespace = "com.teresaferme.todos"
-    compileSdk = 33
+    compileSdk = 34
+    buildToolsVersion = "30.0.3"
+
 
     defaultConfig {
         applicationId = "com.teresaferme.todos"
         minSdk = 28
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
