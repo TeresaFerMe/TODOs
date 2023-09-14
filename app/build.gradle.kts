@@ -6,7 +6,7 @@ plugins {
 android {
     namespace = "com.teresaferme.todos"
     compileSdk = 34
-    buildToolsVersion = "30.0.3"
+    buildToolsVersion = "33.0.1"
 
 
     defaultConfig {
