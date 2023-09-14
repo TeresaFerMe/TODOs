@@ -4,12 +4,16 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.material3.Card
+import androidx.compose.material3.Checkbox
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Surface
@@ -24,23 +28,20 @@ import com.teresaferme.todos.model.TODOModel
 import com.teresaferme.todos.ui.theme.categoryLineSize
 import com.teresaferme.todos.ui.theme.commonPadding
 import com.teresaferme.todos.ui.theme.iconSize
+import com.teresaferme.todos.ui.theme.todoCalendarCardHeight
 
 @Composable
 fun TODOListItem(
     todoModel: TODOModel
 ) {
-    Column(modifier = Modifier.wrapContentHeight()) {
+    Card(modifier = Modifier.wrapContentHeight()) {
         Divider(
             modifier = Modifier.height(categoryLineSize), color = todoModel.categoryColor
         )
         Row(Modifier.padding(commonPadding)) {
-            Icon(
-                modifier = Modifier
-                    .size(iconSize)
-                    .weight(0.25f),
-                painter = painterResource(id = R.drawable.ic_launcher_foreground),
-                contentDescription = "TODO Icon"
-            )
+            Checkbox(checked = false, onCheckedChange = {
+
+            })
             Column(
                 modifier = Modifier
                     .weight(1f)
@@ -58,35 +59,35 @@ fun TODOListItem(
             )
         }
     }
+
 }
 
 @Composable
 fun TODOCalendarItem(
     todoModel: TODOModel
 ) {
-    Row {
-        Spacer(
-            modifier = Modifier
-                .width(commonPadding)
-                .background(todoModel.categoryColor)
-                .height(commonPadding)
-        )
-        Icon(
-            modifier = Modifier.size(iconSize),
-            painter = painterResource(id = R.drawable.ic_launcher_foreground),
-            contentDescription = "TODO Icon"
-        )
-        Column(
-            modifier = Modifier.wrapContentSize()
-        ) {
-            Text(text = todoModel.name, modifier = Modifier.wrapContentSize())
-            Text(text = todoModel.dueDate, modifier = Modifier.wrapContentSize())
+    Card {
+        Row(modifier = Modifier.heightIn(max = todoCalendarCardHeight)) {
+            Spacer(
+                modifier = Modifier
+                    .width(categoryLineSize)
+                    .background(todoModel.categoryColor).fillMaxHeight()
+            )
+            Checkbox(checked = false, onCheckedChange = {
+
+            })
+            Column(
+                modifier = Modifier.wrapContentSize()
+            ) {
+                Text(text = todoModel.name, modifier = Modifier.wrapContentSize())
+                Text(text = todoModel.dueDate, modifier = Modifier.wrapContentSize())
+            }
+            Icon(
+                modifier = Modifier.size(iconSize),
+                painter = painterResource(id = R.drawable.ic_launcher_foreground),
+                contentDescription = "TODO Icon"
+            )
         }
-        Icon(
-            modifier = Modifier.size(iconSize),
-            painter = painterResource(id = R.drawable.ic_launcher_foreground),
-            contentDescription = "TODO Icon"
-        )
     }
 }
 
