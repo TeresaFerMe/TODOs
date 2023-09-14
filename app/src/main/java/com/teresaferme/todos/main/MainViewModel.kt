@@ -24,6 +24,17 @@ class MainViewModel : BaseViewModel() {
     val isCalendarViewSelected: MutableLiveData<Boolean> by lazy {
         MutableLiveData(false)
     }
+    val addingTODO: MutableLiveData<Boolean> by lazy {
+        MutableLiveData(false)
+    }
+
+    fun startAddTODOProcess() {
+        this.addingTODO.value = true
+    }
+
+    fun endAddTODOProcess() {
+        this.addingTODO.value = false
+    }
 
     fun getTODOsList(): List<TODOModel> {
         this.mustUpdateTODOList.value = false
