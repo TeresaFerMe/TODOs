@@ -22,8 +22,8 @@ import com.teresaferme.todos.ui.theme.iconSize
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AddTODO(
-    onAddClicked: () -> Unit,
-    onCloseClicked: () -> Unit
+    onAddClicked: (name: String, due: String) -> Unit = { _, _ ->},
+    onCloseClicked: () -> Unit = {}
 ) {
     Column(modifier = Modifier
         .padding(commonPadding)
@@ -48,7 +48,9 @@ fun AddTODO(
             value = "",
             onValueChange = {})
         TextButton(modifier = Modifier.align(Alignment.End), onClick = {
-            onAddClicked.invoke()
+            onAddClicked.invoke(
+                "name", "due"
+            )
         }) {
             Text("Add")
         }
@@ -58,5 +60,5 @@ fun AddTODO(
 @Preview
 @Composable
 fun AddTODOPreview() {
-    AddTODO({},{})
+    AddTODO()
 }

@@ -58,8 +58,8 @@ class MainActivity : BaseActivity() {
             }
             Row(Modifier.align(Alignment.BottomEnd)) {
                 Text(text = "Change view", modifier = Modifier.clickable {
-                        viewModel.updateSelectedView()
-                    })
+                    viewModel.updateSelectedView()
+                })
                 Button(onClick = { viewModel.startAddTODOProcess() }, shape = CircleShape) {
                     Text(text = "+")
                 }
@@ -71,22 +71,13 @@ class MainActivity : BaseActivity() {
                         .matchParentSize()
                         .align(Alignment.BottomCenter)
                 ) {
-                    AddTODO(
-                        onCloseClicked = {
-                            isAddModalShown.value = false
-                        },
-                        onAddClicked = {
-                            viewModel.addTODO(
-                                TODOModel(
-                                    name = "nuevo ${viewModel.getTODOsList().count()}",
-                                    dueDate = "due",
-                                    categoryColor = Color.Cyan,
-                                    isCompleted = false
-                                )
-                            )
-                            viewModel.endAddTODOProcess()
-                        }
-                    )
+                    AddTODO(onCloseClicked = {
+                        isAddModalShown.value = false
+                    }, onAddClicked = { name, due ->
+                        viewModel.addTODO(
+                            TODOModel(name = name, dueDate = due, Color.LightGray, false)
+                        )
+                    })
                 }
             }
         }

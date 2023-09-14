@@ -32,10 +32,6 @@ class MainViewModel : BaseViewModel() {
         this.addingTODO.value = true
     }
 
-    fun endAddTODOProcess() {
-        this.addingTODO.value = false
-    }
-
     fun getTODOsList(): List<TODOModel> {
         this.mustUpdateTODOList.value = false
         return todoList
@@ -49,6 +45,7 @@ class MainViewModel : BaseViewModel() {
         list.add(todoModel)
         this.todoList = list
         this.mustUpdateTODOList.value = true
+        this.addingTODO.value = false
     }
 
     fun updateSelectedView() {
