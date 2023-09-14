@@ -4,11 +4,13 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.teresaferme.todos.ui.theme.TODOsTheme
+import com.teresaferme.todos.ui.theme.commonPadding
 
 abstract class BaseActivity: ComponentActivity() {
 
@@ -17,7 +19,7 @@ abstract class BaseActivity: ComponentActivity() {
         setContent {
             TODOsTheme {
                 Surface(
-                    modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background
+                    modifier = Modifier.fillMaxSize().padding(commonPadding), color = MaterialTheme.colorScheme.background
                 ) {
                     MainContent()
                 }
