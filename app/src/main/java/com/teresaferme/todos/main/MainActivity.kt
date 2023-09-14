@@ -5,11 +5,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.safeContent
-import androidx.compose.foundation.layout.safeGestures
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ModalDrawerSheet
@@ -70,18 +66,24 @@ class MainActivity : BaseActivity() {
                 ModalDrawerSheet(
                     modifier = Modifier
                         .wrapContentHeight()
-                        .fillMaxWidth()
+                        .matchParentSize()
                         .align(Alignment.BottomCenter)
                 ) {
-                    AddTODO()
-                    /*viewModel.addTODO(
-                        TODOModel(
-                            name = "nuevo ${viewModel.getTODOsList().count()}",
-                            dueDate = "due",
-                            categoryColor = Color.Cyan
-                        )
-                    )*/
-                    //viewModel.endAddTODOProcess()
+                    AddTODO(
+                        onCloseClicked = {
+                            isAddModalShown.value = false
+                        },
+                        onAddClicked = {
+                            viewModel.addTODO(
+                                TODOModel(
+                                    name = "nuevo ${viewModel.getTODOsList().count()}",
+                                    dueDate = "due",
+                                    categoryColor = Color.Cyan
+                                )
+                            )
+                            viewModel.endAddTODOProcess()
+                        }
+                    )
                 }
             }
         }

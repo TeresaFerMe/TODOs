@@ -1,5 +1,6 @@
 package com.teresaferme.todos.add
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -22,7 +23,10 @@ import com.teresaferme.todos.ui.theme.iconSize
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AddTODO() {
+fun AddTODO(
+    onAddClicked: () -> Unit,
+    onCloseClicked: () -> Unit
+) {
     Column(modifier = Modifier.padding(commonPadding).wrapContentHeight()) {
         Icon(
             painter = painterResource(id = R.drawable.ic_launcher_foreground),
@@ -30,6 +34,9 @@ fun AddTODO() {
             modifier = Modifier
                 .align(Alignment.End)
                 .size(iconSize)
+                .clickable {
+                    onCloseClicked.invoke()
+                }
         )
         Text(text = "Add TODO")
         OutlinedTextField(placeholder = { Text(text = "TODO name") },
@@ -40,7 +47,9 @@ fun AddTODO() {
             label = { Text(text = "TODO due") },
             value = "",
             onValueChange = {})
-        TextButton(modifier = Modifier.align(Alignment.End), onClick = { /*TODO*/ }) {
+        TextButton(modifier = Modifier.align(Alignment.End), onClick = {
+            onAddClicked.invoke()
+        }) {
             Text("Add")
         }
     }
@@ -49,5 +58,5 @@ fun AddTODO() {
 @Preview
 @Composable
 fun AddTODOPreview() {
-    AddTODO()
+    AddTODO({},{})
 }
