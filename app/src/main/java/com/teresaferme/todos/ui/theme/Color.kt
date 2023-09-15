@@ -2,7 +2,7 @@ package com.teresaferme.todos.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Primary = Color(0x6666BAFF)
+val Primary = Color(0xFFC6E0FA)
 val OnPrimary = Color(0xFF66baff)
 val PrimaryContainer = Color(0xE666BAFF)
 val OnPrimaryContainer = Color(0x1A66BAFF)

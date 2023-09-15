@@ -8,15 +8,13 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.teresaferme.todos.ui.theme.TODOsTheme
 import com.teresaferme.todos.ui.theme.commonPadding
 
-abstract class BaseActivity: ComponentActivity() {
+abstract class BaseActivity : ComponentActivity() {
 
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,12 +24,13 @@ abstract class BaseActivity: ComponentActivity() {
                 Column(
                     modifier = Modifier.fillMaxSize()
                 ) {
-                    CenterAlignedTopAppBar(title = { Text(text = "TODOs")})
+                    CenterAlignedTopAppBar(title = { Text(text = "TODOs") })
                     MainContent(modifier = Modifier.padding(commonPadding))
                 }
             }
         }
     }
+
     override fun onResume() {
         super.onResume()
         this.setUpObservables()
