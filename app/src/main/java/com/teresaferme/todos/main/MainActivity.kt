@@ -47,17 +47,14 @@ class MainActivity : BaseActivity() {
 
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
-    override fun MainContent() {
+    override fun MainContent(modifier: Modifier) {
         TODOsTheme {
-            Box(modifier = Modifier.fillMaxSize()) {
+            Box(modifier = modifier.fillMaxSize()) {
                 Column(
                     modifier = Modifier
                         .fillMaxSize()
                         .align(Alignment.TopCenter)
                 ) {
-                    Row {
-                        Text(text = "TODOs")
-                    }
                     if (!isCalendarViewSelected.value) ListView(todoList = todoList.value) {
                         executeOnTODOClicked(it)
                     }

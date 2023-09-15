@@ -21,3 +21,4 @@ val analogous2 = Color(0xFF666EFF)
 val triadic1 = Color(0xFFAB66FF)
 val triadic2 = Color(0xFFFF66BA)
 
+val Surface = Primary
