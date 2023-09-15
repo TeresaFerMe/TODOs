@@ -2,10 +2,22 @@ package com.teresaferme.todos.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Purple80 = Color(0xFFD0BCFF)
-val PurpleGrey80 = Color(0xFFCCC2DC)
-val Pink80 = Color(0xFFEFB8C8)
+val Primary = Color(0x6666BAFF)
+val OnPrimary = Color(0xFF66baff)
+val PrimaryContainer = Color(0xE666BAFF)
+val OnPrimaryContainer = Color(0x1A66BAFF)
 
-val Purple40 = Color(0xFF6650a4)
-val PurpleGrey40 = Color(0xFF625b71)
-val Pink40 = Color(0xFF7D5260)
+val Secondary = Color(0x66FFAB66)
+val OnSecondary = Color(0xFFFFAB66)
+val SecondaryContainer = Color(0xE6FFAB66)
+val OnSecondaryContainer = Color(0x1AFFAB66)
+
+val Tertiary = Color(0x6666FFF7)
+val OnTertiary = Color(0xFF66FFF7)
+val TertiaryContainer = Color(0xE666FFF7)
+val OnTertiaryContainer = Color(0x1A66FFF7)
+
+val analogous2 = Color(0xFF666EFF)
+val triadic1 = Color(0xFFAB66FF)
+val triadic2 = Color(0xFFFF66BA)
+

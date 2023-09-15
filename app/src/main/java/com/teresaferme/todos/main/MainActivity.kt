@@ -20,6 +20,7 @@ import androidx.compose.ui.graphics.Color
 import com.teresaferme.todos.add.AddTODO
 import com.teresaferme.todos.base.BaseActivity
 import com.teresaferme.todos.model.TODOModel
+import com.teresaferme.todos.ui.theme.TODOsTheme
 
 class MainActivity : BaseActivity() {
     private val viewModel: MainViewModel by viewModels()
@@ -47,39 +48,52 @@ class MainActivity : BaseActivity() {
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     override fun MainContent() {
-        Box(modifier = Modifier.fillMaxSize()) {
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .align(Alignment.TopCenter)
-            ) {
-                if (!isCalendarViewSelected.value) ListView(todoList = todoList.value)
-                else CalendarView(todoList = todoList.value)
-            }
-            Row(Modifier.align(Alignment.BottomEnd)) {
-                Text(text = "Change view", modifier = Modifier.clickable {
-                    viewModel.updateSelectedView()
-                })
-                Button(onClick = { viewModel.startAddTODOProcess() }, shape = CircleShape) {
-                    Text(text = "+")
-                }
-            }
-            if (isAddModalShown.value) {
-                ModalDrawerSheet(
+        TODOsTheme {
+            Box(modifier = Modifier.fillMaxSize()) {
+                Column(
                     modifier = Modifier
-                        .wrapContentHeight()
-                        .matchParentSize()
-                        .align(Alignment.BottomCenter)
+                        .fillMaxSize()
+                        .align(Alignment.TopCenter)
                 ) {
-                    AddTODO(onCloseClicked = {
-                        isAddModalShown.value = false
-                    }, onAddClicked = { name, due ->
-                        viewModel.addTODO(
-                            TODOModel(name = name, dueDate = due, Color.LightGray, false)
-                        )
+                    Row {
+                        Text(text = "TODOs")
+                    }
+                    if (!isCalendarViewSelected.value) ListView(todoList = todoList.value) {
+                        executeOnTODOClicked(it)
+                    }
+                    else CalendarView(todoList = todoList.value) {
+                        executeOnTODOClicked(it)
+                    }
+                }
+                Row(Modifier.align(Alignment.BottomEnd)) {
+                    Text(text = "Change view", modifier = Modifier.clickable {
+                        viewModel.updateSelectedView()
                     })
+                    Button(onClick = { viewModel.startAddTODOProcess() }, shape = CircleShape) {
+                        Text(text = "+")
+                    }
+                }
+                if (isAddModalShown.value) {
+                    ModalDrawerSheet(
+                        modifier = Modifier
+                            .wrapContentHeight()
+                            .matchParentSize()
+                            .align(Alignment.BottomCenter)
+                    ) {
+                        AddTODO(onCloseClicked = {
+                            isAddModalShown.value = false
+                        }, onAddClicked = { name, due ->
+                            viewModel.addTODO(
+                                TODOModel(name = name, dueDate = due, Color.LightGray, false)
+                            )
+                        })
+                    }
                 }
             }
         }
+    }
+
+    private fun executeOnTODOClicked(todoModel: TODOModel) {
+        viewModel.todoItemSelected(todoModel)
     }
 }

@@ -19,12 +19,13 @@ abstract class BaseActivity: ComponentActivity() {
         setContent {
             TODOsTheme {
                 Surface(
-                    modifier = Modifier.fillMaxSize().padding(commonPadding), color = MaterialTheme.colorScheme.background
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(commonPadding), color = MaterialTheme.colorScheme.background
                 ) {
                     MainContent()
                 }
             }
-
         }
     }
     override fun onResume() {

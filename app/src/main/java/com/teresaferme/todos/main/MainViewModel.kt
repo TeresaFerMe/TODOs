@@ -51,4 +51,9 @@ class MainViewModel : BaseViewModel() {
     fun updateSelectedView() {
         this.isCalendarViewSelected.value = !(isCalendarViewSelected.value ?: true)
     }
+
+    fun todoItemSelected(todoModel: TODOModel) {
+        //Retrieve todo model detail from server and
+        //navigate to model detail activity
+    }
 }
